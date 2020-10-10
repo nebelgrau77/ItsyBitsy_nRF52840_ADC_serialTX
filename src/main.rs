@@ -7,11 +7,11 @@ use nrf52840_hal as hal;
 
 use hal::{pac::{CorePeripherals, Peripherals},
         prelude::*,
-        hal::gpio::Level,
+        gpio::Level,
         delay::Delay,
         saadc::{Saadc,SaadcConfig},
         uarte::{Uarte,Parity,Baudrate},
-        }
+        };
 
 use cortex_m_rt::entry;
 

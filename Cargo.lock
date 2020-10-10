@@ -4,7 +4,6 @@
 name = "adc_serial"
 version = "0.1.0"
 dependencies = [
- "arrayvec",
  "cortex-m",
  "cortex-m-rt",
  "embedded-hal",
@@ -20,12 +19,6 @@ checksum = "eb1ce8b3382016136ab1d31a1b5ce807144f8b7eb2d5f16b2108f0f07edceb94"
 dependencies = [
  "as-slice",
 ]
-
-[[package]]
-name = "arrayvec"
-version = "0.5.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cff77d8686867eceff3105329d4698d96c2391c176d5d03adc90c7389162b5b8"
 
 [[package]]
 name = "as-slice"

@@ -12,8 +12,6 @@ cortex-m-rt = "0.6.12"
 nrf52840-hal = { version = "*", features = ["rt"]}
 panic-halt = "~0.2"
 
-arrayvec = {version = "0.5.1",default-features = false}
-
 [dependencies.embedded-hal]
 version = "0.2.3"
 features = ["unproven"]
