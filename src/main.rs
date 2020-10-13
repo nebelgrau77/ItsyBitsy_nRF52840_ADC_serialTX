@@ -10,7 +10,7 @@ use hal::{pac::{CorePeripherals, Peripherals},
         gpio::Level,
         delay::Delay,
         saadc::{Saadc,SaadcConfig},
-        uarte::{Uarte,Parity,Baudrate},
+        uarte::{Uarte,Parity,Baudrate},        
         };
 
 use cortex_m_rt::entry;
@@ -25,7 +25,7 @@ fn main() -> ! {
 
     let port0 = hal::gpio::p0::Parts::new(p.P0);
     let mut led = port0.p0_06.into_push_pull_output(Level::Low);
-    
+
     // set up delay provider
     let mut delay = Delay::new(core.SYST);
     
@@ -36,20 +36,18 @@ fn main() -> ! {
     // define pins for UART
     let rx = port0.p0_25.into_floating_input().degrade();
     let tx = port0.p0_24.into_push_pull_output(Level::Low).degrade();
-    let ct = port0.p0_30.into_floating_input().degrade(); // CTS: not used but necessary for configuration, pin may vary
-    let rt = port0.p0_28.into_push_pull_output(Level::Low).degrade(); // RTS: not used but necessary for configuration, pin may vary
-    
+        
     let pins = hal::uarte::Pins{
             rxd: rx,
-            txd: tx,
-            cts: Some(ct),
-            rts: Some(rt),
+            txd: tx,            
+            cts: None,
+            rts: None,
             };
-
+    
     // set up UART
-    let mut serial = Uarte::new(p.UARTE0, pins, Parity::EXCLUDED, Baudrate::BAUD9600);
+    let mut serial = Uarte::new(p.UARTE0, pins, Parity::EXCLUDED, Baudrate::BAUD9600);    
 
-    let mut adc_val: i16 = 0;
+    let mut adc_val: i16 = 0;    
 
     loop {       
         // read a value from ADC and output to serial, toggle lead each time
